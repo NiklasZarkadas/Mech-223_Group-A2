@@ -1,0 +1,55 @@
+int measureDiff()
+{
+  int startTime; 
+  int endTime;
+  int difference;
+
+  if (analogRead(photo) > 0 && lastVal == 0)
+  {
+    if (startTime == 0)
+    {
+      startTime = millis();
+    }
+
+    else
+    {
+      endTime = millis();
+    }
+
+    if (startTime != 0 && endTime != 0)
+    {
+      difference = endTime - startTime;
+
+      endTime = 0;
+      startTime = 0;
+
+    }
+
+  return difference; 
+
+  }
+}
+
+float calcW (int difference)
+{
+  float W = mesGearRat*(2.0*PI/slitNum)/difference; 
+
+  return W; 
+}
+
+
+float calcDist(float W, int difference)
+{
+  float speed = wheelRadius*W;
+
+  float dist = (1.0*difference)*speed; 
+
+  return dist;
+
+}
+
+
+
+
+
+ 
