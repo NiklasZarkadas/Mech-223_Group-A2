@@ -40,7 +40,7 @@ float W[10];
 int wIndex = 0; 
 
 // fucntion needed stuff
-float lastVal = 0;
+int lastVal = 0;
 
 
 void setup() 
@@ -70,22 +70,22 @@ if (startCode == true)
 {
   analogWrite(motor, motorSpeed);
 
-  W[wIndex] = calcW(measureDiff()); 
+  W[wIndex] = calcW(measureDiff(LastVal)); 
 
   if (hill == false)
   {
-    distance += calcDist(W[wIndex], measureDiff());
+    distance += calcDist(W[wIndex], measureDiff(LastVal));
 
     if (distance >= cutoffDist)
     {
 
       if (W[wIndex]*wheelRadius <= curveSpeed)
       {
-        motorSpeed += 5;
+        motorSpeed += 1;
       }
       else
       {
-        motorSpeed -= 5;
+        motorSpeed -= 1;
       }
     }
   
@@ -108,6 +108,8 @@ if (startCode == true)
 
 
 //very end of code
+lastVal = analogRead(photo);
+
  wIndex++;
 
 if (W[10] != 0)

@@ -1,4 +1,4 @@
-int measureDiff()
+int measureDiff(int lasVal)
 {
   int startTime; 
   int endTime;
@@ -11,12 +11,12 @@ int measureDiff()
       startTime = millis();
     }
 
-    else
+    else if (endTime == 0)
     {
       endTime = millis();
     }
 
-    if (startTime != 0 && endTime != 0)
+    else (startTime != 0 && endTime != 0)
     {
       difference = endTime - startTime;
 

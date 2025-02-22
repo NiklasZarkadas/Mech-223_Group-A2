@@ -1,36 +1,46 @@
+int measureDiff(int lasVal, int startTime, int endTime)
+{ 
+  int difference;
 
-// Global Vars for measuremnt system
+  if (analogRead(photo) > 0 && lastVal == 0)
+  {
+    if (startTime == 0)
+    {
+      startTime = millis();
+    }
 
-// Radius of drive wheel in meters
-const float wheelRadius = 0.015; 
-// Number of breaks in measuremnt wheel
-const float breakNum = 5.0; 
-// gear ratio Mes wheel - drive wheels
-const float mesGearRat = 5.0; 
+    else if (endTime == 0)
+    {
+      endTime = millis();
+    }
 
-float calcW(float difference)
-{
+    else
+    {
+      difference = endTime - startTime;
 
-  float W = (2.0*PI/breakNum)/difference; 
+      endTime = 0;
+      startTime = 0;
 
-  return W; 
+    }
 
+  return difference; 
+
+  }
 }
 
-//float calcSpeed(float W)
-//{
-   
-//float speed = wheelRadius*W*mesGearRat;
-
-  // return speed; 
-
-//}
-
-float calcDist(float W, float difference)
+float calcW (int difference)
 {
-  float speed = wheelRadius*W*mesGearRat;
+  float W = mesGearRat*(2.0*PI/slitNum)/(difference/1000.0); 
 
-  float dist = difference*speed; 
+  return W; 
+}
+
+
+float calcDist(float W, int difference)
+{
+  float speed = wheelRadius*W;
+
+  float dist = (1.0*difference)*speed; 
 
   return dist;
 
@@ -38,3 +48,6 @@ float calcDist(float W, float difference)
 
 
 
+
+
+ 
