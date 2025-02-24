@@ -12,18 +12,18 @@ const int photo = A0;
 // Radius of drive wheel in meters
 const float wheelRadius = 0.015; 
 // Number of breaks in measuremnt wheel
-const int slitNum = 6; 
+const int slitNum = 2; 
 // gear ratio Mes wheel - drive wheels
 const int mesGearRat = 1; 
 
 // Global Vars for track
 
 // distance of straight track
-const int straightDist = 8; 
+const int straightDist = 1; 
 // straight cutoff dist 
-const int cutoffDist = 5; 
+const int cutoffDist = 0.8; 
 // raduis of track curve (m)
-const float curveRadius = 5.0; 
+const float curveRadius = 0.1; 
 // speed the curve should be taken at (m/s)
 const float curveSpeed = 5.0; 
 
@@ -60,7 +60,7 @@ void loop() {
   //Serial.print("Sensor Value: ");
   
 
-  if (currentVal > 20 && lastVal < 10) {
+  if (currentVal > 5 && lastVal < 5) {
     if (startTime == 0) {
       startTime = millis();
     
